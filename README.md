@@ -1,30 +1,49 @@
-# Coffee-Machine
+# Coffee Machine
 
-This Python program simulates a coffee machine, replicating functionalities such as coffee selection, payment processing, and drink preparation. Users can choose their desired coffee, and the machine handles payments by accepting money, checking for sufficient funds, and returning change if applicable. The program also prepares the selected coffee and includes error handling for incorrect names, insufficient funds, and ingredient availability. Additional functions and attributes ensure smooth operation by managing these aspects efficiently.
+This Python program simulates a coffee machine, handling functionalities such as coffee selection, payment processing, and drink preparation. Users can choose their desired coffee, and the machine manages payments, checks for sufficient funds, and prepares the selected coffee. The program includes error handling for incorrect names, insufficient funds, and ingredient availability.
 
-# MENU CLASS
-- This file defines two classes, MenuItem and Menu, for a coffee machine simulation. The MenuItem class models individual menu items with attributes for name, cost, and ingredients (water, milk, coffee). The Menu class models the entire menu, initializing with a list of MenuItem instances (latte, espresso, cappuccino).
+## Components
 
-- The get_items function returns the names of all the items in the menu
+### Menu Class
 
-- The find_drink function searches the menu for the drink name inputted, if the coffee is an option, we return the coffee, if not we return nothing and let the user know that the item is unavialable.
+The `Menu` class defines the available coffee options and their attributes.
 
-# COFFEE_MAKER CLASS
-- The CoffeeMaker class models the coffee machine, managing its resources and making coffee. It has a dictionary attribute called resources, which stores the current amounts of available ingredients: water, milk, and coffee.
+- **`MenuItem` Class**: Represents an individual menu item with attributes for name, cost, and ingredients (water, milk, coffee).
 
-- The report method prints the current amounts of each resource in the machine, providing a clear overview of the machine's status.
+- **`Menu` Class**: Manages the list of `MenuItem` instances (latte, espresso, cappuccino).
 
-- The is_resource_sufficient method takes a drink object as an argument and checks if the machine has enough resources to make that drink. It iterates over the ingredients required for the drink and compares them with the current resource levels. If any ingredient is insufficient, it prints a message indicating the shortage and returns False. Otherwise, it returns True, indicating that the machine can make the drink.
+  - **`get_items()`**: Returns the names of all items in the menu.
+  
+  - **`find_drink(name)`**: Searches for a drink by name. If the drink is available, it returns the corresponding `MenuItem` object; otherwise, it notifies the user that the item is unavailable.
 
-- Finally, the make_coffee method takes an order object as an argument and deducts the required ingredients from the machine's resources to make the coffee. It updates the resources dictionary by subtracting the amounts of each ingredient used for the order. After making the coffee, it prints a message indicating that the coffee is ready
+### Coffee Maker Class
 
-# MONEY CLASS
-- The MoneyMachine class manages financial transactions for the coffee machine. It has a CURRENCY attribute set to "$" and a COIN_VALUES dictionary that defines the value of different coin types (quarters, dimes, nickels, and pennies).
+The `CoffeeMaker` class models the coffee machine, handling resources and drink preparation.
 
-- The constructor (__init__) initializes the profit and money_received attributes to 0, tracking the total profit and money received during transactions.
+- **`resources`**: A dictionary storing the current amounts of available ingredients (water, milk, coffee).
 
-- The report method prints the current profit, displaying it in the defined currency format
+- **`report()`**: Prints the current amounts of each resource, providing an overview of the machine's status.
 
-- The process_coins method calculates the total amount of money inserted by the user. It prompts the user to input the number of each type of coin and sums their values to update the money_received attribute
+- **`is_resource_sufficient(drink)`**: Checks if the machine has enough resources to make the requested drink. It compares the required ingredients with the available resources and prints a message if any ingredient is insufficient. Returns `True` if the resources are sufficient, otherwise `False`.
 
-- The process_coins method calculates the total amount of money inserted by the user. It prompts the user to input the number of each type of coin and sums their values to update the money_received attribute
+- **`make_coffee(drink)`**: Deducts the required ingredients from the machine’s resources and prepares the coffee. Prints a message indicating that the coffee is ready.
+
+### Money Machine Class
+
+The `MoneyMachine` class handles financial transactions for the coffee machine.
+
+- **`CURRENCY`**: Set to "$", defines the currency format.
+
+- **`COIN_VALUES`**: A dictionary defining the value of different coin types (quarters, dimes, nickels, pennies).
+
+- **`profit`**: Tracks the total profit from transactions.
+
+- **`money_received`**: Tracks the total money received during transactions.
+
+- **`report()`**: Prints the current profit in the defined currency format.
+
+- **`process_coins()`**: Calculates the total amount of money inserted by the user. Prompts the user to input the number of each coin type, sums their values, and updates the `money_received` attribute.
+
+## How to Run
+
+To run the coffee machine simulation, ensure you have Python installed on your system. Execute the main Python script to start the program.
